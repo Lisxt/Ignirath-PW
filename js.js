@@ -1,4 +1,4 @@
-// Elementos do DOM
+
 const paginaInicial = document.getElementById("pagina-inicial");
 const paginaQuiz = document.getElementById("pagina-quiz");
 const paginaResultado = document.getElementById("pagina-resultado");
@@ -8,7 +8,7 @@ const imgResultado = document.getElementById("img-personagem");
 const nomePersonagem = document.getElementById("nome-personagem");
 const descricaoPersonagem = document.getElementById("descricao-personagem");
 
-// Dados do quiz
+
 const perguntas = [
     "Qual dessas qualidades te define melhor?",
     "Qual ambiente você se sente mais confortável?",
