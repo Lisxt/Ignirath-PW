@@ -1,20 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Ignirath - Quiz RPG</title>
+    <link rel="stylesheet" href="Style.css">
 </head>
 <body>
-    <!--
-            1-Criar a página inicial com boas-vindas e introdução ao universo fictício.
+    <div id="pagina-inicial">
+        <h1>Bem-vindo ao universo de Ignirath!</h1>
+        <p>Descubra qual personagem de RPG você seria neste mundo dominado por fogo, lâminas e florestas místicas.</p>
+        <button onclick="iniciarQuiz()">Começar Quiz</button>
+    </div>
 
-            2-Criar a página de questionário com as 10 perguntas e opções.
+    <div id="pagina-quiz" style="display:none">
+        <div id="pergunta-container"></div>
+        <div id="opcoes-container"></div>
+        <button onclick="proximaPergunta()">Próxima</button>
+    </div>
 
-            3-Criar a página de resultado para exibir o personagem com maior pontuação.
-               Página de resultado (resultado com pontuação + imagem + nome + descrição) 
-    -->
+    <div id="pagina-resultado" style="display:none">
+        <h2>Seu personagem é:</h2>
+        <div id="resultado"></div>
+        <button onclick="reiniciarQuiz()">Reiniciar</button>
+    </div>
+
     <script src="js.js"></script>
 </body>
 </html>
