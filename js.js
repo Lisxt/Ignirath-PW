@@ -27,7 +27,6 @@ const personagens = {
     moglie: new Personagem("Moglie", "Exploradora veloz da selva de Eldora, ágil e astuta.", "img/moglie.jpg")
 };
 
-// Perguntas e opções
 const perguntas = [
     "Qual dessas qualidades te define melhor?",
     "Qual ambiente você se sente mais confortável?",
@@ -118,7 +117,6 @@ function reiniciarQuiz() {
     iniciarQuiz();
 }
 
-// Eventos
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btn-iniciar").addEventListener("click", iniciarQuiz);
     document.getElementById("btn-reiniciar").addEventListener("click", reiniciarQuiz);
