@@ -1,4 +1,3 @@
-
 const paginaInicial = document.getElementById("pagina-inicial");
 const paginaQuiz = document.getElementById("pagina-quiz");
 const paginaResultado = document.getElementById("pagina-resultado");
@@ -8,7 +7,27 @@ const imgResultado = document.getElementById("img-personagem");
 const nomePersonagem = document.getElementById("nome-personagem");
 const descricaoPersonagem = document.getElementById("descricao-personagem");
 
+// Classe Personagem
+class Personagem {
+    constructor(nome, descricao, imagem) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.imagem = imagem;
+        this.pontos = 0;
+    }
 
+    adicionarPontos(valor) {
+        this.pontos += valor;
+    }
+}
+
+const personagens = {
+    estela: new Personagem("Princesa Estela", "Herdeira do Reino Flamejante, controla o fogo e lidera com coragem.", "img/princesa.jpg"),
+    shin: new Personagem("Espada Shin", "Guerreiro solitário e mestre das lâminas, frio e preciso.", "img/shin.jpg"),
+    moglie: new Personagem("Moglie", "Exploradora veloz da selva de Eldora, ágil e astuta.", "img/moglie.jpg")
+};
+
+// Perguntas e opções
 const perguntas = [
     "Qual dessas qualidades te define melhor?",
     "Qual ambiente você se sente mais confortável?",
@@ -35,35 +54,19 @@ const opcoes = [
     ["A chama dentro de mim nunca se apaga.", "Corte preciso, mente afiada.", "Silêncio é poder."]
 ];
 
-const pontuacoes = {
-    estela: 0,
-    shin: 0,
-    moglie: 0
-};
-
-const personagens = {
-    estela: {
-        nome: "Princesa Estela",
-        descricao: "Herdeira do Reino Flamejante, controla o fogo e lidera com coragem.",
-        imagem: "img/estela.png"
-    },
-    shin: {
-        nome: "Espada Shin",
-        descricao: "Guerreiro solitário e mestre das lâminas, frio e preciso.",
-        imagem: "img/shin.png"
-    },
-    moglie: {
-        nome: "Moglie",
-        descricao: "Exploradora veloz da selva de Eldora, ágil e astuta.",
-        imagem: "img/moglie.png"
-    }
-};
-
 let perguntaAtual = 0;
 
 function iniciarQuiz() {
     paginaInicial.style.display = "none";
+    paginaResultado.style.display = "none";
     paginaQuiz.style.display = "block";
+    perguntaAtual = 0;
+
+    // Zerar os pontos
+    for (let chave in personagens) {
+        personagens[chave].pontos = 0;
+    }
+
     mostrarPergunta();
 }
 
@@ -76,15 +79,15 @@ function mostrarPergunta() {
     alternativas.forEach((opcao, index) => {
         const btn = document.createElement("button");
         btn.innerText = opcao;
-        btn.onclick = () => responder(index);
+        btn.addEventListener("click", () => responder(index));
         perguntaContainer.appendChild(btn);
     });
 }
 
 function responder(indice) {
-    if (indice === 0) pontuacoes.estela += 10;
-    else if (indice === 1) pontuacoes.shin += 5;
-    else if (indice === 2) pontuacoes.moglie += 1;
+    if (indice === 0) personagens.estela.adicionarPontos(10);
+    else if (indice === 1) personagens.shin.adicionarPontos(5);
+    else if (indice === 2) personagens.moglie.adicionarPontos(1);
 
     perguntaAtual++;
 
@@ -100,8 +103,8 @@ function mostrarResultado() {
     paginaResultado.style.display = "block";
 
     let vencedor = "estela";
-    if (pontuacoes.shin > pontuacoes[vencedor]) vencedor = "shin";
-    if (pontuacoes.moglie > pontuacoes[vencedor]) vencedor = "moglie";
+    if (personagens.shin.pontos > personagens[vencedor].pontos) vencedor = "shin";
+    if (personagens.moglie.pontos > personagens[vencedor].pontos) vencedor = "moglie";
 
     const personagem = personagens[vencedor];
     resultadoTexto.innerText = `Você é ${personagem.nome}!`;
@@ -110,6 +113,13 @@ function mostrarResultado() {
     imgResultado.src = personagem.imagem;
 }
 
+
+function reiniciarQuiz() {
+    iniciarQuiz();
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btn-iniciar").addEventListener("click", iniciarQuiz);
+    document.getElementById("btn-reiniciar").addEventListener("click", reiniciarQuiz);
 });

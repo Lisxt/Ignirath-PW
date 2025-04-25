@@ -10,19 +10,20 @@
     <div id="pagina-inicial">
         <h1>Bem-vindo ao universo de Ignirath!</h1>
         <p>Descubra qual personagem de RPG você seria neste mundo dominado por fogo, lâminas e florestas místicas.</p>
-        <button onclick="iniciarQuiz()">Começar Quiz</button>
+        <button id="btn-iniciar">Começar Quiz</button>
     </div>
 
     <div id="pagina-quiz" style="display:none">
         <div id="pergunta-container"></div>
-        <div id="opcoes-container"></div>
-        <button onclick="proximaPergunta()">Próxima</button>
     </div>
 
     <div id="pagina-resultado" style="display:none">
         <h2>Seu personagem é:</h2>
-        <div id="resultado"></div>
-        <button onclick="reiniciarQuiz()">Reiniciar</button>
+        <div id="resultado"></div> 
+        <h3 id="nome-personagem"></h3>
+        <img id="img-personagem" src="" alt="Imagem do personagem" />
+        <p id="descricao-personagem"></p>
+        <button id="btn-reiniciar">Reiniciar</button>
     </div>
 
     <script src="js.js"></script>
