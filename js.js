@@ -118,7 +118,7 @@ function reiniciarQuiz() {
     iniciarQuiz();
 }
 
-
+// Eventos
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btn-iniciar").addEventListener("click", iniciarQuiz);
     document.getElementById("btn-reiniciar").addEventListener("click", reiniciarQuiz);
