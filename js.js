@@ -4,7 +4,7 @@ const paginaQuiz = document.getElementById("pagina-quiz");
 const paginaResultado = document.getElementById("pagina-resultado");
 const perguntaContainer = document.getElementById("pergunta-container");
 const resultadoTexto = document.getElementById("resultado");
-const imgResultado = document.getElementById("img-personagem");
+const imgResultado = document.getElementById("imgResultado");
 const nomePersonagem = document.getElementById("nome-personagem");
 const descricaoPersonagem = document.getElementById("descricao-personagem");
 
@@ -45,17 +45,17 @@ const personagens = {
     estela: {
         nome: "Princesa Estela",
         descricao: "Herdeira do Reino Flamejante, controla o fogo e lidera com coragem.",
-        imagem: "img/estela.png"
+        imagem: "princesa.jpg"
     },
     shin: {
         nome: "Espada Shin",
         descricao: "Guerreiro solitário e mestre das lâminas, frio e preciso.",
-        imagem: "img/shin.png"
+        imagem: "shin.jpg"
     },
     moglie: {
         nome: "Moglie",
         descricao: "Exploradora veloz da selva de Eldora, ágil e astuta.",
-        imagem: "img/moglie.png"
+        imagem: "moglie.jpg"
     }
 };
 
@@ -104,7 +104,7 @@ function mostrarResultado() {
     if (pontuacoes.moglie > pontuacoes[vencedor]) vencedor = "moglie";
 
     const personagem = personagens[vencedor];
-    resultadoTexto.innerText = `Você é ${personagem.nome}!`;
+    resultadoTexto.innerHTML = `Você é ${personagem.nome}!<br>${personagem.descricao}`;
     nomePersonagem.innerText = personagem.nome;
     descricaoPersonagem.innerText = personagem.descricao;
     imgResultado.src = personagem.imagem;
