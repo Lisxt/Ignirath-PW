@@ -61,7 +61,7 @@ function iniciarQuiz() {
     paginaQuiz.style.display = "block";
     perguntaAtual = 0;
 
-    // Zerar os pontos
+
     for (let chave in personagens) {
         personagens[chave].pontos = 0;
     }
@@ -95,6 +95,18 @@ function responder(indice) {
     } else {
         mostrarResultado();
     }
+}
+
+function reiniciarQuiz() {
+    perguntaAtual = 0;
+    pontuacoes.estela = 0;
+    pontuacoes.shin = 0;
+    pontuacoes.moglie = 0;
+
+    paginaResultado.style.display = "none";
+
+    paginaInicial.style.display = "block";
+
 }
 
 function mostrarResultado() {
