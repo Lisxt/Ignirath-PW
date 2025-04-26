@@ -3,26 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ignirath - Quiz RPG</title>
+    <title>Ignirath - RPG</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="pagina-inicial">
+    <div id="inicial">
         <h1>Bem-vindo ao universo de Ignirath!</h1>
+        <h4>Ignirath é um mundo onde os elementos naturais governam reinos distintos: o fogo, a 
+            lâmina e a selva. Um continente marcado por guerras antigas, lendas esquecidas e 
+            heróis em ascensão </h4>
         <p>Descubra qual personagem de RPG você seria neste mundo dominado por fogo, lâminas e florestas místicas.</p>
         <button id="btn-iniciar">Começar Quiz</button>
     </div>
 
-    <div id="pagina-quiz" style="display:none">
-        <div id="pergunta-container"></div>
+    <div id="quiz" style="display:none">
+        <div id="pergunta"></div>
     </div>
 
-    <div id="pagina-resultado" style="display:none">
+    <div id="resultado-pag" style="display:none">
         <h2>Seu personagem é:</h2>
         <div id="resultado"></div> 
-        <h3 id="nome-personagem"></h3>
-        <img id="img-personagem" src="" alt="Imagem do personagem" />
-        <p id="descricao-personagem"></p>
+        <h3 id="nome"></h3>
+        <img id="img" src="" alt="Imagem do personagem" />
+        <p id="descricao"></p>
         <button id="btn-reiniciar">Reiniciar</button>
     </div>
 

@@ -1,13 +1,13 @@
-const paginaInicial = document.getElementById("pagina-inicial");
-const paginaQuiz = document.getElementById("pagina-quiz");
-const paginaResultado = document.getElementById("pagina-resultado");
-const perguntaContainer = document.getElementById("pergunta-container");
-const resultadoTexto = document.getElementById("resultado");
-const imgResultado = document.getElementById("img-personagem");
-const nomePersonagem = document.getElementById("nome-personagem");
-const descricaoPersonagem = document.getElementById("descricao-personagem");
+//Consts
+const Inicial = document.getElementById("inicial");
+const Quiz = document.getElementById("quiz");
+const Resultado = document.getElementById("resultado-pag");
+const perguntaContainer = document.getElementById("pergunta");
+const img = document.getElementById("img");
+const nome= document.getElementById("nome");
+const descricao = document.getElementById("descricao");
 
-// Classe Personagem
+//Classe Personagem
 class Personagem {
     constructor(nome, descricao, imagem) {
         this.nome = nome;
@@ -22,11 +22,12 @@ class Personagem {
 }
 
 const personagens = {
-    estela: new Personagem("Princesa Estela", "Herdeira do Reino Flamejante, controla o fogo e lidera com coragem.", "img/princesa.jpg"),
-    shin: new Personagem("Espada Shin", "Guerreiro solitário e mestre das lâminas, frio e preciso.", "img/shin.jpg"),
-    moglie: new Personagem("Moglie", "Exploradora veloz da selva de Eldora, ágil e astuta.", "img/moglie.jpg")
+    estela: new Personagem("Princesa Estela", "É a herdeira do Reino Flamejante, uma jovem destemida com o poder de controlar e invocar o fogo. Apesar de sua origem nobre, ela se recusa a viver apenas nos salões do castelo e prefere enfrentar seus próprios desafios no campo de batalha.", "img/princesa.jpg"),
+    shin: new Personagem("Espada Shin", "É um guerreiro solitário que domina qualquer tipo de espada com perfeição. Treinado desde criança por um mestre misterioso, ele segue sua jornada pessoal para se tornar o maior espadachim do mundo, mesmo que isso signifique viver longe de laços afetivos.", "img/shin.jpg"),
+    moglie: new Personagem("Moglie", "É uma exploradora ágil e astuta que cresceu nas florestas místicas de Eldora. Criada entre criaturas mágicas, ela domina o terreno como ninguém e raramente é vista antes de atacar. Sua velocidade e astúcia a tornam uma aliada valiosa (ou uma inimiga perigosa). ", "img/moglie.jpg")
 };
 
+//Perguntas
 const perguntas = [
     "Qual dessas qualidades te define melhor?",
     "Qual ambiente você se sente mais confortável?",
@@ -40,6 +41,7 @@ const perguntas = [
     "Qual desses lemas representa você?"
 ];
 
+//Respostas
 const opcoes = [
     ["Coragem e paixão pelo que faz", "Disciplina e foco em objetivos", "Astúcia e conexão com a natureza"],
     ["Perto de vulcões ou lugares quentes", "Campos abertos para treinar combate", "Florestas densas e trilhas secretas"],
@@ -56,12 +58,12 @@ const opcoes = [
 let perguntaAtual = 0;
 
 function iniciarQuiz() {
-    paginaInicial.style.display = "none";
-    paginaResultado.style.display = "none";
-    paginaQuiz.style.display = "block";
+    Inicial.style.display = "none";
+    Resultado.style.display = "none";
+    Quiz.style.display = "block";
     perguntaAtual = 0;
 
-    // Zerar os pontos
+    //Zerar os pontos
     for (let chave in personagens) {
         personagens[chave].pontos = 0;
     }
@@ -83,10 +85,11 @@ function mostrarPergunta() {
     });
 }
 
+//Soma da quantidade de vezes que o personagem foi escolhido
 function responder(indice) {
-    if (indice === 0) personagens.estela.adicionarPontos(10);
-    else if (indice === 1) personagens.shin.adicionarPontos(5);
-    else if (indice === 2) personagens.moglie.adicionarPontos(1);
+    if (indice === 0) personagens.estela.pontos++;
+    else if (indice === 1) personagens.shin.pontos++;
+    else if (indice === 2) personagens.moglie.pontos++;
 
     perguntaAtual++;
 
@@ -97,26 +100,27 @@ function responder(indice) {
     }
 }
 
+//Mostar o personagem , nome, descrição, imagem
 function mostrarResultado() {
-    paginaQuiz.style.display = "none";
-    paginaResultado.style.display = "block";
+    Quiz.style.display = "none";
+    Resultado.style.display = "block";
 
     let vencedor = "estela";
     if (personagens.shin.pontos > personagens[vencedor].pontos) vencedor = "shin";
     if (personagens.moglie.pontos > personagens[vencedor].pontos) vencedor = "moglie";
 
     const personagem = personagens[vencedor];
-    resultadoTexto.innerText = `Você é ${personagem.nome}!`;
-    nomePersonagem.innerText = personagem.nome;
-    descricaoPersonagem.innerText = personagem.descricao;
-    imgResultado.src = personagem.imagem;
+    nome.innerText = personagem.nome;
+    descricao.innerText = personagem.descricao;
+    img.src = personagem.imagem;
 }
 
-
+//Reiniciar o quiz
 function reiniciarQuiz() {
     iniciarQuiz();
 }
 
+//Fucionalidades dos botões
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btn-iniciar").addEventListener("click", iniciarQuiz);
     document.getElementById("btn-reiniciar").addEventListener("click", reiniciarQuiz);
