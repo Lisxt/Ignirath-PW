@@ -29,7 +29,7 @@ const personagens = {
 
 //Perguntas
 const perguntas = [
-    "Qual deessas qualidades te define melhor?",
+    "Qual dessas qualidades te define melhor?",
     "Qual ambiente você se sente mais confortável?",
     "Em uma batalha, o que você faria?",
     "Qual desses objetos você escolheria para uma missão?",
