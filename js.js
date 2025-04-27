@@ -1,13 +1,11 @@
-//Consts
 const Inicial = document.getElementById("inicial");
 const Quiz = document.getElementById("quiz");
-const Resultado = document.getElementById("resultado-pag");
-const perguntaContainer = document.getElementById("pergunta");
+const Resultado = document.getElementById("resultado-pagina");
+const Pergunta = document.getElementById("pergunta");
 const img = document.getElementById("img");
 const nome= document.getElementById("nome");
 const descricao = document.getElementById("descricao");
 
-//Classe Personagem
 class Personagem {
     constructor(nome, descricao, imagem) {
         this.nome = nome;
@@ -27,7 +25,6 @@ const personagens = {
     moglie: new Personagem("Moglie", "É uma exploradora ágil e astuta que cresceu nas florestas místicas de Eldora. Criada entre criaturas mágicas, ela domina o terreno como ninguém e raramente é vista antes de atacar. Sua velocidade e astúcia a tornam uma aliada valiosa (ou uma inimiga perigosa). ", "img/moglie.jpg")
 };
 
-//Perguntas
 const perguntas = [
     "Qual dessas qualidades te define melhor?",
     "Qual ambiente você se sente mais confortável?",
@@ -41,7 +38,6 @@ const perguntas = [
     "Qual desses lemas representa você?"
 ];
 
-//Respostas
 const opcoes = [
     ["Coragem e paixão pelo que faz", "Disciplina e foco em objetivos", "Astúcia e conexão com a natureza"],
     ["Perto de vulcões ou lugares quentes", "Campos abertos para treinar combate", "Florestas densas e trilhas secretas"],
@@ -63,7 +59,6 @@ function iniciarQuiz() {
     Quiz.style.display = "block";
     perguntaAtual = 0;
 
-    //Zerar os pontos
     for (let chave in personagens) {
         personagens[chave].pontos = 0;
     }
@@ -75,17 +70,16 @@ function mostrarPergunta() {
     const pergunta = perguntas[perguntaAtual];
     const alternativas = opcoes[perguntaAtual];
 
-    perguntaContainer.innerHTML = `<h2>${pergunta}</h2>`;
+    Pergunta.innerHTML = `<h2>${pergunta}</h2>`;
 
     alternativas.forEach((opcao, index) => {
         const btn = document.createElement("button");
         btn.innerText = opcao;
         btn.addEventListener("click", () => responder(index));
-        perguntaContainer.appendChild(btn);
+        Pergunta.appendChild(btn);
     });
 }
 
-//Soma da quantidade de vezes que o personagem foi escolhido
 function responder(indice) {
     if (indice === 0) personagens.estela.pontos++;
     else if (indice === 1) personagens.shin.pontos++;
@@ -100,7 +94,6 @@ function responder(indice) {
     }
 }
 
-//Mostar o personagem , nome, descrição, imagem
 function mostrarResultado() {
     Quiz.style.display = "none";
     Resultado.style.display = "block";
@@ -115,13 +108,11 @@ function mostrarResultado() {
     img.src = personagem.imagem;
 }
 
-//Reiniciar o quiz
 function reiniciarQuiz() {
     iniciarQuiz();
 }
 
-//Fucionalidades dos botões
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("btn-iniciar").addEventListener("click", iniciarQuiz);
-    document.getElementById("btn-reiniciar").addEventListener("click", reiniciarQuiz);
+    document.getElementById("iniciar").addEventListener("click", iniciarQuiz);
+    document.getElementById("reiniciar").addEventListener("click", reiniciarQuiz);
 });

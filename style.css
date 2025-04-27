@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-/*Corpo*/
+
 body {
     font-family: 'Georgia', serif;
     background-color: #201d2b;
@@ -16,8 +16,7 @@ body {
     text-align: center;
 }
 
-/*Centralizar e estilizar cartões*/
-#inicial, #quiz, #resultado-pag {
+#inicial, #quiz, #resultado-pagina {
     background-color: #6e0f1a;
     border: 2px solid #caa56a;
     border-radius: 15px;
@@ -42,7 +41,6 @@ p {
     margin: 15px 0;
 }
 
-/*Botões*/
 button {
     background-color: #caa56a;
     color: #201d2b;
@@ -61,7 +59,6 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* Alternativas das perguntas */
 #pergunta {
     margin-top: 20px;
     display: flex;
@@ -69,14 +66,12 @@ button:hover {
     align-items: center;
 }
 
-/* Botões das alternativas */
 #pergunta button {
     margin: 10px 0;
     width: 100%;
     max-width: 400px;
 }
 
-/*Imagem*/
 #img{
     margin-top: 20px;
     width: 250px;
